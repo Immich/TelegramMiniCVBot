@@ -21,14 +21,6 @@ URL = URL
 TOKEN = bot_token
 bot = telegram.Bot(token=TOKEN)
 
-# Stages
-#FIRST, SECOND, THIRD, FOURTH, FIFTH, SIXTH, SEVENTH = range(7)
-
-
-# Callback data
-# ONE, TWO, THREE, FOUR = range(4)
-
-
 #### Command Handlers ####
 
 # def start(update, context):
@@ -70,7 +62,7 @@ def start(update: Update, context: CallbackContext) -> None:
 
 
 def menu(update: Update, context: CallbackContext) -> None:
-    """Send Message on '/start'."""
+    """Show menu on '/menu'."""
     keyboard = [
         [
             InlineKeyboardButton("Short bio ⚡‍", callback_data="/bio"),
@@ -133,12 +125,9 @@ def button(update: Update, context: CallbackContext) -> None:
         #query.edit_message_text(text=f"You selected: {query.data}, type '/show_work_projects' if you want to see the projects menu again or go back to the main '/menu'")
     elif query.data == "/lstm":
         lstm(update, context)
-        #query.edit_message_text(text=f"You selected: {query.data}, type '/show_work_projects' if you want to see the projects menu again or go back to the main '/menu'")
-    #query.edit_message_text(text=f"You selected: {query.data}, if you want to see the menu again please type '/menu'")
-    #query.edit_message_text(text=f"You selected: {queri.data}, if you want to see the projects again please type '/work_projects' or go back to the main '/menu'")
 
 def show_work_projects(update: Update, context: CallbackContext) -> None:
-    """Send Message on '/start'."""
+    """Show projects menu on '/show_work_projects'."""
     keyboard = [
         [
             InlineKeyboardButton("🆔 Fraud Prevention‍", callback_data="/id_fraud"),
@@ -296,13 +285,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-# Changing from Polling to Webhooks
-# Firstly, we will modify how the bot fetches new data.
-# The python-telegram-bot script uses polling instead of webhooks to fetch new data.
-# For simple testing purposes, polling is sufficient because it’s simple to implement.
-# However, the disadvantage of polling is that it is inefficient and the data it fetches
-# is always old and never real-time. This is because polling sends a request at a predetermined
-# frequency to detect any changes in the data, meaning it constantly checks if the data is modified,
-# instead of being “notified” when a change is made to the data.
-#
